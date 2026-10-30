@@ -1,0 +1,1167 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Click | AI Business Automation</title>
+
+<style>
+:root {
+    --blue: #0866ed;
+    --dark-blue: #064fc2;
+    --light-blue: #eaf2ff;
+    --text: #111827;
+    --grey: #64748b;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+    scroll-behavior: smooth;
+}
+
+body {
+    background: white;
+    color: var(--text);
+}
+
+.container {
+    width: 90%;
+    max-width: 1150px;
+    margin: auto;
+}
+
+a {
+    text-decoration: none;
+}
+
+/* HEADER */
+
+header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: white;
+    border-bottom: 1px solid #e5eaf2;
+}
+
+.navbar {
+    height: 75px;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+.menu-btn {
+    background: white;
+    border: 1px solid #dce5f1;
+    border-radius: 10px;
+    padding: 10px 13px;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 23px;
+    font-weight: bold;
+    color: var(--text);
+}
+
+.logo img {
+    width: 42px;
+    height: 42px;
+    object-fit: contain;
+}
+
+.logo span {
+    color: var(--blue);
+}
+
+.nav-space {
+    flex: 1;
+}
+
+.nav-cta {
+    background: var(--blue);
+    color: white;
+    padding: 12px 18px;
+    border-radius: 8px;
+    font-weight: bold;
+}
+
+/* HAMBURGER MENU */
+
+.side-menu {
+    position: fixed;
+    top: 0;
+    left: -300px;
+    width: 280px;
+    height: 100vh;
+    background: white;
+    z-index: 300;
+    padding: 30px;
+    box-shadow: 5px 0 30px #0001;
+    transition: .3s;
+}
+
+.side-menu.active {
+    left: 0;
+}
+
+.side-menu h2 {
+    color: var(--blue);
+    margin: 35px 0;
+}
+
+.side-menu a {
+    display: block;
+    padding: 17px 10px;
+    color: var(--text);
+    border-bottom: 1px solid #eee;
+    font-weight: bold;
+}
+
+.side-menu a:hover {
+    color: var(--blue);
+}
+
+.close-btn {
+    float: right;
+    border: none;
+    background: var(--light-blue);
+    color: var(--blue);
+    padding: 8px 13px;
+    font-size: 22px;
+    cursor: pointer;
+    border-radius: 8px;
+}
+
+.overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: #0007;
+    z-index: 200;
+}
+
+.overlay.active {
+    display: block;
+}
+
+/* HERO / HOME PAGE */
+
+.hero {
+    padding: 75px 0;
+    background: linear-gradient(180deg, #f1f7ff, white);
+}
+
+.hero-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 40px;
+}
+
+.tag {
+    display: inline-block;
+    padding: 9px 15px;
+    background: var(--light-blue);
+    color: var(--blue);
+    border-radius: 30px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.hero h1 {
+    font-size: clamp(40px, 5vw, 60px);
+    line-height: 1.12;
+    margin: 25px 0;
+}
+
+.hero h1 span {
+    color: var(--blue);
+}
+
+.hero p {
+    color: var(--grey);
+    font-size: 17px;
+    line-height: 1.8;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 12px;
+    margin-top: 30px;
+    flex-wrap: wrap;
+}
+
+.btn {
+    display: inline-block;
+    padding: 14px 21px;
+    border-radius: 9px;
+    font-weight: bold;
+}
+
+.primary {
+    background: var(--blue);
+    color: white;
+}
+
+.primary:hover {
+    background: var(--dark-blue);
+}
+
+.secondary {
+    border: 1px solid #cbdcf8;
+    color: var(--blue);
+    background: white;
+}
+
+.banner {
+    width: 100%;
+    border-radius: 18px;
+    box-shadow: 0 15px 45px #164c9b18;
+}
+
+/* SECTIONS */
+
+section {
+    padding: 85px 0;
+}
+
+.section-heading {
+    text-align: center;
+    margin-bottom: 45px;
+}
+
+.section-heading h2 {
+    font-size: 36px;
+    margin-bottom: 13px;
+}
+
+.section-heading p {
+    color: var(--grey);
+    line-height: 1.7;
+}
+
+/* SERVICES */
+
+.services {
+    background: #f5f9ff;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+}
+
+.card {
+    background: white;
+    border: 1px solid #e2eaf5;
+    border-radius: 15px;
+    padding: 30px;
+    transition: .3s;
+}
+
+.card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 15px 35px #164c9b15;
+    border-color: var(--blue);
+}
+
+.card-icon {
+    font-size: 35px;
+    margin-bottom: 20px;
+}
+
+.card h3 {
+    margin-bottom: 13px;
+}
+
+.card p {
+    color: var(--grey);
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+/* HOW IT WORKS */
+
+.steps {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+    text-align: center;
+}
+
+.step {
+    padding: 20px;
+}
+
+.number {
+    width: 50px;
+    height: 50px;
+    display: grid;
+    place-items: center;
+    margin: 0 auto 20px;
+    background: var(--blue);
+    color: white;
+    border-radius: 14px;
+    font-size: 21px;
+    font-weight: bold;
+}
+
+.step p {
+    margin-top: 12px;
+    color: var(--grey);
+    line-height: 1.7;
+}
+
+/* PRICING */
+
+.pricing {
+    background: #f5f9ff;
+}
+
+.price-card {
+    background: white;
+    padding: 30px;
+    border: 1px solid #dce6f4;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    transition: .3s;
+}
+
+.price-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 15px 35px #164c9b15;
+}
+
+.price-card.featured {
+    border: 2px solid var(--blue);
+    position: relative;
+}
+
+.popular {
+    background: var(--blue);
+    color: white;
+    font-size: 11px;
+    padding: 7px 12px;
+    border-radius: 20px;
+    display: inline-block;
+    margin-bottom: 15px;
+    width: fit-content;
+}
+
+.price-card p {
+    color: var(--grey);
+    margin-top: 12px;
+    line-height: 1.6;
+}
+
+.price {
+    color: var(--blue);
+    font-size: 36px;
+    font-weight: bold;
+    margin: 22px 0;
+}
+
+.price small {
+    font-size: 14px;
+    color: var(--grey);
+    font-weight: normal;
+}
+
+.price-card ul {
+    list-style: none;
+    margin-bottom: 25px;
+    flex: 1;
+}
+
+.price-card li {
+    padding: 12px 0;
+    border-bottom: 1px solid #eee;
+    color: var(--grey);
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.price-card li::before {
+    content: "✓ ";
+    color: var(--blue);
+    font-weight: bold;
+}
+
+.price-card a {
+    text-align: center;
+}
+
+/* CONTACT */
+
+.contact-content {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 40px;
+    align-items: start;
+}
+
+.contact-info h2 {
+    font-size: 38px;
+    margin: 20px 0;
+}
+
+.contact-info p {
+    color: var(--grey);
+    line-height: 1.8;
+}
+
+.contact-form {
+    padding: 30px;
+    border: 1px solid #e1e9f5;
+    border-radius: 15px;
+    box-shadow: 0 12px 40px #164c9b10;
+}
+
+.contact-form label {
+    display: block;
+    margin-bottom: 7px;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.contact-form input,
+.contact-form select,
+.contact-form textarea {
+    width: 100%;
+    padding: 14px;
+    margin-bottom: 18px;
+    border: 1px solid #dce5f1;
+    border-radius: 8px;
+    outline: none;
+    background: #fbfdff;
+}
+
+.contact-form input:focus,
+.contact-form select:focus,
+.contact-form textarea:focus {
+    border-color: var(--blue);
+}
+
+.contact-form textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+.contact-form button {
+    width: 100%;
+    border: none;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+#formMessage {
+    margin-top: 15px;
+    color: var(--blue);
+    font-size: 13px;
+}
+
+/* FOOTER */
+
+footer {
+    background: #f5f9ff;
+    padding: 35px 0;
+    border-top: 1px solid #e5eaf2;
+    text-align: center;
+}
+
+footer p {
+    color: var(--grey);
+    font-size: 13px;
+    margin-top: 12px;
+}
+
+.footer-links {
+    margin-top: 15px;
+}
+
+.footer-links a {
+    color: var(--blue);
+    margin: 0 10px;
+    font-size: 13px;
+}
+
+/* MOBILE RESPONSIVENESS */
+
+@media(max-width: 800px) {
+    .hero-content,
+    .contact-content {
+        grid-template-columns: 1fr;
+    }
+
+    .cards {
+        grid-template-columns: 1fr;
+    }
+
+    .steps {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media(max-width: 500px) {
+    .navbar {
+        height: 65px;
+        gap: 10px;
+    }
+
+    .logo {
+        font-size: 19px;
+    }
+
+    .logo img {
+        width: 35px;
+        height: 35px;
+    }
+
+    .nav-cta {
+        padding: 10px;
+        font-size: 12px;
+    }
+
+    .hero {
+        padding: 55px 0;
+    }
+
+    .hero h1 {
+        font-size: 40px;
+    }
+
+    section {
+        padding: 60px 0;
+    }
+
+    .section-heading h2 {
+        font-size: 29px;
+    }
+
+    .contact-form {
+        padding: 20px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- SIDE MENU -->
+
+<div class="overlay" id="overlay"></div>
+
+<nav class="side-menu" id="sideMenu">
+
+    <button class="close-btn" onclick="toggleMenu()">×</button>
+
+    <h2>Click.</h2>
+
+    <a href="#home" onclick="toggleMenu()">Home</a>
+    <a href="#services" onclick="toggleMenu()">Our Services</a>
+    <a href="#pricing" onclick="toggleMenu()">Pricing</a>
+    <a href="#contact" onclick="toggleMenu()">Contact Us</a>
+
+</nav>
+
+<!-- HEADER -->
+
+<header>
+
+    <div class="container navbar">
+
+        <button class="menu-btn" onclick="toggleMenu()">☰</button>
+
+        <a href="#home" class="logo">
+            <img src="logo.png" alt="Click Logo">
+            <span>Click</span>
+        </a>
+
+        <div class="nav-space"></div>
+
+        <a href="#contact" class="nav-cta">Get Started →</a>
+
+    </div>
+
+</header>
+
+<!-- HOME PAGE -->
+
+<main>
+
+<section class="hero" id="home">
+
+    <div class="container hero-content">
+
+        <div>
+
+            <div class="tag">
+                SMART BUSINESS AUTOMATION
+            </div>
+
+            <h1>
+                More Conversations.
+                More Bookings.
+                <span>More Growth.</span>
+            </h1>
+
+            <p>
+                Click helps small businesses automate
+                customer messaging, appointments and
+                everyday tasks using AI.
+
+                Save time, respond to customers faster
+                and focus on growing your business.
+            </p>
+
+            <div class="hero-buttons">
+
+                <a href="#contact" class="btn primary">
+                    Automate My Business →
+                </a>
+
+                <a href="#services" class="btn secondary">
+                    Explore Services
+                </a>
+
+            </div>
+
+        </div>
+
+        <div>
+
+            <img
+                src="banner.png"
+                class="banner"
+                alt="Click - Automate Your Messaging and Appointments">
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- SERVICES -->
+
+<section class="services" id="services">
+
+    <div class="container">
+
+        <div class="section-heading">
+
+            <h2>What We Automate</h2>
+
+            <p>
+                Smart solutions designed for small businesses.
+            </p>
+
+        </div>
+
+        <div class="cards">
+
+            <div class="card">
+
+                <div class="card-icon">💬</div>
+
+                <h3>AI Customer Messaging</h3>
+
+                <p>
+                    Automatically respond to customer questions,
+                    handle enquiries and provide information
+                    even when you're busy.
+                </p>
+
+            </div>
+
+            <div class="card">
+
+                <div class="card-icon">📅</div>
+
+                <h3>Appointments & Bookings</h3>
+
+                <p>
+                    Allow customers to request appointments,
+                    receive confirmations and get automatic
+                    booking reminders.
+                </p>
+
+            </div>
+
+            <div class="card">
+
+                <div class="card-icon">🤖</div>
+
+                <h3>Business Automation</h3>
+
+                <p>
+                    Automate repetitive tasks, customer
+                    follow-ups and everyday business
+                    workflows.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- HOW IT WORKS -->
+
+<section>
+
+    <div class="container">
+
+        <div class="section-heading">
+
+            <h2>How Click Works</h2>
+
+            <p>Getting started is simple.</p>
+
+        </div>
+
+        <div class="steps">
+
+            <div class="step">
+
+                <div class="number">1</div>
+
+                <h3>Tell Us Your Needs</h3>
+
+                <p>
+                    We learn about your business
+                    and identify the tasks you want
+                    to automate.
+                </p>
+
+            </div>
+
+            <div class="step">
+
+                <div class="number">2</div>
+
+                <h3>We Build Your System</h3>
+
+                <p>
+                    We create an automation system
+                    that fits your business needs.
+                </p>
+
+            </div>
+
+            <div class="step">
+
+                <div class="number">3</div>
+
+                <h3>Save Time & Grow</h3>
+
+                <p>
+                    Your automated workflows help
+                    you manage customer interactions
+                    more efficiently.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- UPDATED PRICING -->
+
+<section class="pricing" id="pricing">
+
+    <div class="container">
+
+        <div class="section-heading">
+
+            <h2>Choose Your Package</h2>
+
+            <p>
+                Affordable AI automation plans
+                designed to help your business grow.
+            </p>
+
+        </div>
+
+        <div class="cards">
+
+            <!-- PLATINUM -->
+
+            <div class="price-card">
+
+                <h3>PLATINUM</h3>
+
+                <p>
+                    Perfect for small businesses
+                    starting with AI automation.
+                </p>
+
+                <div class="price">
+                    $60
+                </div>
+
+                <ul>
+
+                    <li>AI customer messaging</li>
+
+                    <li>Basic appointment automation</li>
+
+                    <li>One automated workflow</li>
+
+                    <li>Basic customer responses</li>
+
+                    <li>Basic setup support</li>
+
+                </ul>
+
+                <a
+                    href="#contact"
+                    class="btn secondary"
+                    onclick="selectPlan('Platinum - $60')">
+
+                    Choose Platinum
+
+                </a>
+
+            </div>
+
+            <!-- DIAMOND -->
+
+            <div class="price-card featured">
+
+                <span class="popular">
+                    MOST POPULAR
+                </span>
+
+                <h3>DIAMOND</h3>
+
+                <p>
+                    For growing businesses that
+                    want more automation.
+                </p>
+
+                <div class="price">
+                    $100
+                </div>
+
+                <ul>
+
+                    <li>Everything in Platinum</li>
+
+                    <li>Automated booking confirmations</li>
+
+                    <li>Customer follow-up messages</li>
+
+                    <li>Multiple automated workflows</li>
+
+                    <li>Appointment reminders</li>
+
+                    <li>Priority support</li>
+
+                </ul>
+
+                <a
+                    href="#contact"
+                    class="btn primary"
+                    onclick="selectPlan('Diamond - $100')">
+
+                    Choose Diamond
+
+                </a>
+
+            </div>
+
+            <!-- MASTER -->
+
+            <div class="price-card">
+
+                <h3>MASTER</h3>
+
+                <p>
+                    Advanced automation for businesses
+                    ready to maximise efficiency.
+                </p>
+
+                <div class="price">
+                    $150
+                </div>
+
+                <ul>
+
+                    <li>Everything in Diamond</li>
+
+                    <li>Advanced AI customer assistant</li>
+
+                    <li>Advanced appointment management</li>
+
+                    <li>Multiple business integrations</li>
+
+                    <li>Custom automation workflows</li>
+
+                    <li>Premium support</li>
+
+                </ul>
+
+                <a
+                    href="#contact"
+                    class="btn secondary"
+                    onclick="selectPlan('Master - $150')">
+
+                    Choose Master
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- CONTACT US -->
+
+<section id="contact">
+
+    <div class="container contact-content">
+
+        <div class="contact-info">
+
+            <div class="tag">CONTACT CLICK</div>
+
+            <h2>
+                Let's Automate
+                Your Business.
+            </h2>
+
+            <p>
+                Tell us about your business and
+                what you want to automate.
+
+                Whether you're a barber, restaurant
+                owner or another small business,
+                we're ready to help.
+            </p>
+
+        </div>
+
+        <form class="contact-form" id="contactForm">
+
+            <label>Your Name</label>
+
+            <input
+                type="text"
+                id="name"
+                placeholder="Enter your name"
+                required>
+
+            <label>Email Address</label>
+
+            <input
+                type="email"
+                id="email"
+                placeholder="Enter your email"
+                required>
+
+            <label>Business Name</label>
+
+            <input
+                type="text"
+                id="business"
+                placeholder="Your business name"
+                required>
+
+            <label>Business Type</label>
+
+            <select id="businessType" required>
+
+                <option value="">Select your business</option>
+                <option>Barbershop</option>
+                <option>Restaurant</option>
+                <option>Beauty Salon</option>
+                <option>Retail Store</option>
+                <option>Other</option>
+
+            </select>
+
+            <label>Choose Your Package</label>
+
+            <select id="selectedPlan" required>
+
+                <option value="">Select a package</option>
+                <option>Platinum - $60</option>
+                <option>Diamond - $100</option>
+                <option>Master - $150</option>
+
+            </select>
+
+            <label>What Would You Like To Automate?</label>
+
+            <textarea
+                id="message"
+                placeholder="Tell us what you need..."
+                required></textarea>
+
+            <button type="submit" class="btn primary">
+                Send Enquiry →
+            </button>
+
+            <p id="formMessage"></p>
+
+        </form>
+
+    </div>
+
+</section>
+
+</main>
+
+<!-- FOOTER -->
+
+<footer>
+
+    <div class="container">
+
+        <a href="#home" class="logo" style="justify-content:center">
+
+            <img src="logo.png" alt="Click Logo">
+
+            <span>Click</span>
+
+        </a>
+
+        <p>
+            Automate Your Messaging & Appointments
+        </p>
+
+        <div class="footer-links">
+
+            <a href="#home">Home</a>
+            <a href="#services">Services</a>
+            <a href="#pricing">Pricing</a>
+            <a href="#contact">Contact</a>
+
+        </div>
+
+        <p>
+            © <span id="year"></span> Click.
+            All rights reserved.
+        </p>
+
+    </div>
+
+</footer>
+
+<!-- JAVASCRIPT -->
+
+<script>
+
+// HAMBURGER MENU
+
+function toggleMenu() {
+
+    document.getElementById("sideMenu")
+        .classList.toggle("active");
+
+    document.getElementById("overlay")
+        .classList.toggle("active");
+
+}
+
+// CLOSE MENU WHEN BACKGROUND IS CLICKED
+
+document.getElementById("overlay")
+    .addEventListener("click", toggleMenu);
+
+// AUTOMATIC COPYRIGHT YEAR
+
+document.getElementById("year").textContent =
+    new Date().getFullYear();
+
+// AUTOMATICALLY SELECT A PRICING PACKAGE
+
+function selectPlan(plan) {
+
+    document.getElementById("selectedPlan").value = plan;
+
+}
+
+// CONTACT FORM
+
+document.getElementById("contactForm")
+    .addEventListener("submit", function(event) {
+
+        event.preventDefault();
+
+        const name =
+            document.getElementById("name").value;
+
+        const email =
+            document.getElementById("email").value;
+
+        const business =
+            document.getElementById("business").value;
+
+        const type =
+            document.getElementById("businessType").value;
+
+        const plan =
+            document.getElementById("selectedPlan").value;
+
+        const message =
+            document.getElementById("message").value;
+
+        const subject = encodeURIComponent(
+            "New Enquiry - Click"
+        );
+
+        const body = encodeURIComponent(
+            "Name: " + name +
+            "\nEmail: " + email +
+            "\nBusiness: " + business +
+            "\nBusiness Type: " + type +
+            "\nSelected Package: " + plan +
+            "\nMessage: " + message
+        );
+
+        // YOUR CONNECTED BUSINESS EMAIL
+
+        const businessEmail = "clickeasy72@gmail.com";
+
+        if (businessEmail === "YOUR_EMAIL@example.com") {
+
+            document.getElementById("formMessage")
+                .textContent =
+                "Please connect your business email before launching.";
+
+            return;
+
+        }
+
+        window.location.href =
+            "mailto:" + businessEmail +
+            "?subject=" + subject +
+            "&body=" + body;
+
+    });
+
+</script>
+
+</body>
+</html>
